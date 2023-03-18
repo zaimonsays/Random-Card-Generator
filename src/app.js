@@ -1,11 +1,27 @@
 /* eslint-disable */
-import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+window.onload = () => {
+  let symbols = generateRandomSymbol();
+  document.querySelector(".top-symbol").innerHTML = symbols;
+  document.querySelector(".bottom-symbol").innerHTML = symbols;
+  document.querySelector(".number").innerHTML = generateRandomNumber();
+  let symbolColor = document.querySelectorAll(".color");
+  if (symbols === "♥" || symbols === "♦") {
+    for (let i of symbolColor) {
+      i.style.color = "red";
+    }
+  }
+};
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
+let generateRandomNumber = () => {
+  let numbers = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K"];
+  let indexNumbers = Math.floor(Math.random() * numbers.length);
+  return numbers[indexNumbers];
+};
+
+let generateRandomSymbol = () => {
+  let symbols = ["♦", "♥", "♠", "♣"];
+  let indexSymbol = Math.floor(Math.random() * symbols.length);
+  return symbols[indexSymbol];
 };
